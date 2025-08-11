@@ -21,9 +21,8 @@ export default defineConfig({
   reporter: [["list"], ["html"]],
   use: {
     trace: "on-first-retry",
-    headless: false,
-    viewport: { width: "1920px", height: 1080 },
-    launchOptions: {},
+    screenshot: "on",
+    viewport: { width: "1920px", height: "945px" },
   },
 
   /* Configure projects for major browsers */
@@ -32,7 +31,6 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-
     // {
     //   name: "firefox",
     //   use: { ...devices["Desktop Firefox"] },
@@ -55,12 +53,12 @@ export default defineConfig({
 
     /* Test against branded browsers. */
     // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    //   name: "Microsoft Edge",
+    //   use: { ...devices["Desktop Edge"], channel: "msedge" },
     // },
     // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   name: "Google Chrome",
+    //   use: { ...devices["Desktop Chrome"], channel: "chrome" },
     // },
   ],
 
