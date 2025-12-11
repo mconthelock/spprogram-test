@@ -29,7 +29,7 @@ test.skip("Create inquiry", async ({ browser, page }) => {
   await page.locator("#send-de").click();
   await page.waitForLoadState("networkidle");
   await expect(page.locator("#inquiry-title")).toContainText("T-MLS-25-A001");
-  //   await page.pause();
+  await page.pause();
 });
 
 test.skip("Upload tsv file", async ({ browser, page }) => {
