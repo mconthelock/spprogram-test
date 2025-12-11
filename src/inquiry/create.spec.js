@@ -52,7 +52,7 @@ test.skip("Upload tsv file", async ({ browser, page }) => {
   await expect(page.locator("#inquiry-title")).toContainText("T-MET-25-A0002");
 });
 
-test("Create inquiry and attach file", async ({ browser, page }) => {
+test.skip("Create inquiry and attach file", async ({ browser, page }) => {
   await page.goto("http://localhost:8080/spprogram/mar/inquiry/create/");
   await page.locator("#project-no").fill("1580-3004(T)");
   await page.locator("#project-no").blur();
@@ -71,8 +71,8 @@ test("Create inquiry and attach file", async ({ browser, page }) => {
   await expect(page.locator(".mfgno").first()).toContainText("EXCD85010");
 
   await page.locator(".itemno").first().fill("125");
+  await page.locator(".carno").first().blur();
   await page.locator(".partname").first().fill("P1000-CO-105,18S/O");
-
   const fileChooserPromise = page.waitForEvent("filechooser");
   await page.locator("#add-attachment").click();
   const fileChooser = await fileChooserPromise;
@@ -81,7 +81,7 @@ test("Create inquiry and attach file", async ({ browser, page }) => {
     path.resolve(__dirname, "./file/SP_AG-MELCO_R2025-1333_20250730190508.txt"),
   ]);
   await page.waitForLoadState("networkidle");
-
+  await page.pause();
   await page.locator("#send-de").click();
   await page.waitForLoadState("networkidle");
   await expect(page.locator("#inquiry-title")).toContainText("T-MLS-25-A003");

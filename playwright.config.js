@@ -22,7 +22,7 @@ export default defineConfig({
   use: {
     trace: "on-first-retry",
     screenshot: "on",
-    viewport: { width: "1920px", height: "945px" },
+    headless: false,
   },
 
   /* Configure projects for major browsers */
